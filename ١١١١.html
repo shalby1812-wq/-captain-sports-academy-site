@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="preload" as="image" href="assets/hero-team.webp" type="image/webp">
+  <meta name="theme-color" content="#0a0a0c">
+  <title>Captain Sports Academy | Sharjah, UAE</title>
+  <meta name="description" content="Captain Sports Academy — Football, Swimming, Gymnastics and Summer Camps in Sharjah, UAE. Football program: 12 sessions/month at Al Khan Beach Stadium.">
+  <meta property="og:title" content="Captain Sports Academy | Sharjah, UAE">
+  <meta property="og:description" content="Football • Swimming • Gymnastics • Summer Camps — Sharjah, UAE">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-team.webp">
+  <style>
+    :root{
+      --black:#0a0a0c;
+      --panel:#121216;
+      --panel2:#18181e;
+      --red:#d71920;
+      --gold:#f2b733;
+      --white:#fff;
+      --muted:#b9bbc2;
+      --green:#25D366;
+      --radius:22px;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --ink:#141416;
+      --ink-muted:#5c5e66;
+      --hair:rgba(0,0,0,.1);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.55}
+    body.rtl{font-family:Tahoma,Arial,sans-serif}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+    .container{width:min(1180px,92%);margin:auto}
+    .page{display:none}
+    .page.active{display:block}
+
+    /* ===== Nav ===== */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,8,10,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;cursor:pointer}
+    .brand img{height:52px;width:auto}
+    .brand-title{font-size:.9rem;line-height:1.05}
+    .brand-title small{display:block;color:var(--gold);font-weight:700;margin-top:3px}
+    .nav-links{display:flex;gap:20px;align-items:center;font-size:.9rem;color:#ddd}
+    .nav-links a{cursor:pointer}
+    .nav-links a:hover,.nav-links a.on{color:var(--gold)}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .lang{border:1px solid rgba(255,255,255,.22);background:transparent;color:white;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:800}
+    .cta{background:var(--red);color:white;border-radius:999px;padding:12px 18px;font-weight:900;display:inline-flex;align-items:center;gap:8px;box-shadow:0 10px 30px rgba(215,25,32,.28);cursor:pointer;border:0;font-size:.95rem}
+    .btn-outline{border:1px solid rgba(255,255,255,.35);padding:12px 18px;border-radius:999px;font-weight:800;background:rgba(255,255,255,.04);cursor:pointer;display:inline-block}
+    .nav-toggle{display:none;border:1px solid rgba(255,255,255,.2);background:transparent;color:white;border-radius:12px;padding:9px 11px;font-size:1.15rem;cursor:pointer}
+    .mobile-panel{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;background:rgba(8,8,10,.98);border-bottom:1px solid rgba(255,255,255,.1);padding:16px 4% 20px}
+    .mobile-panel.open{display:grid;gap:4px}
+    .mobile-panel a{padding:12px 10px;border-radius:12px;color:#eee;cursor:pointer}
+    .mobile-panel a:hover{background:rgba(255,255,255,.06)}
+
+    /* ===== Sections / shared ===== */
+    section{padding:82px 0}
+    .section-light{background:#fff;color:var(--ink)}
+    .section-light .eyebrow{color:var(--red)}
+    .section-light .muted,.section-light p{color:var(--ink-muted)}
+    .section-head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:34px}
+    .section-head h2{font-size:clamp(2rem,4vw,3.6rem);margin:6px 0 0}
+    .section-head p{max-width:560px;margin:0}
+    .eyebrow{color:var(--gold);font-weight:900;letter-spacing:.04em;font-size:.85rem}
+    .card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .section-light .card{background:#fff;border:1px solid rgba(0,0,0,.09);box-shadow:0 16px 40px rgba(0,0,0,.08)}
+
+    /* ===== img placeholder (graceful fallback until real photos are added) ===== */
+    .img-wrap{position:relative;overflow:hidden;background:linear-gradient(145deg,#1a1a20,#0f0f12);display:flex;align-items:center;justify-content:center;min-height:180px}
+    .img-wrap .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-weight:800;font-size:.85rem;padding:14px;z-index:1}
+    .img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+
+    /* ===== Home hero ===== */
+    .hero{min-height:92vh;display:flex;align-items:center;padding:118px 0 58px;position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.80) 39%,rgba(0,0,0,.25) 74%,rgba(0,0,0,.45) 100%),url('assets/hero-team.webp') center 25%/cover no-repeat}
+    .hero::after{content:"";position:absolute;inset:auto 0 0;height:180px;background:linear-gradient(transparent,var(--black))}
+    .hero-content{position:relative;z-index:2;max-width:680px}
+    h1{font-size:clamp(2.8rem,6.4vw,6rem);line-height:.92;margin:12px 0 18px;text-transform:uppercase;font-style:italic}
+    h1 span{color:var(--red)}
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);color:#e6e6e8;max-width:630px}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:34px}
+    .hero-stat{background:rgba(15,15,18,.72);border:1px solid rgba(255,255,255,.1);padding:16px;border-radius:18px}
+    .hero-stat b{font-size:1.5rem;color:var(--gold);display:block}
+
+    /* ===== Programs grid (home, section-light) ===== */
+    .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .prog-card{padding:26px;display:flex;flex-direction:column;gap:12px}
+    .prog-badge{display:inline-flex;align-self:flex-start;font-size:.75rem;font-weight:900;padding:6px 12px;border-radius:999px}
+    .prog-badge.active{background:rgba(215,25,32,.12);color:var(--red);border:1px solid rgba(215,25,32,.4)}
+    .prog-badge.soon{background:rgba(242,183,51,.14);color:#a6790c;border:1px solid rgba(242,183,51,.5)}
+    .prog-card h3{margin:2px 0 0;font-size:1.4rem}
+    .prog-card p{margin:0;font-size:.95rem}
+    .prog-card .go{margin-top:auto;font-weight:900;color:var(--red);display:inline-flex;align-items:center;gap:6px}
+    .prog-card.more{border:2px dashed rgba(0,0,0,.18);background:transparent;box-shadow:none;align-items:flex-start;justify-content:center;min-height:220px}
+
+    /* ===== Page header (sub-pages) ===== */
+    .page-hero{padding:150px 0 60px;background:linear-gradient(180deg,#151519,var(--black));border-bottom:1px solid rgba(255,255,255,.06)}
+    .back-link{color:var(--muted);font-weight:800;font-size:.88rem;display:inline-flex;gap:6px;align-items:center;margin-bottom:16px;cursor:pointer}
+    .back-link:hover{color:var(--gold)}
+    .page-hero h1{font-size:clamp(2.4rem,5vw,4.2rem)}
+    .page-hero .lead{margin-top:8px}
+    .status-pill{display:inline-flex;gap:8px;align-items:center;margin-top:14px;padding:9px 15px;border-radius:999px;font-weight:900;font-size:.85rem}
+    .status-pill.active{background:rgba(215,25,32,.15);border:1px solid rgba(215,25,32,.5)}
+    .status-pill.soon{background:rgba(242,183,51,.15);border:1px solid rgba(242,183,51,.5);color:var(--gold)}
+
+    /* ===== Football page pieces ===== */
+    .offer-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .price-card{padding:30px;position:relative;overflow:hidden}
+    .price-card::after{content:"12";position:absolute;right:-10px;bottom:-90px;font-size:18rem;font-weight:900;color:rgba(255,255,255,.025)}
+    .price-old{text-decoration:line-through;color:#a7a7ad;font-size:1.4rem}
+    .price-now{font-size:clamp(3.4rem,7vw,6rem);font-weight:1000;line-height:.95;color:var(--gold)}
+    .price-now small{font-size:1.2rem;color:white}
+    .session-pill{display:inline-flex;gap:10px;align-items:center;margin-top:16px;background:rgba(215,25,32,.15);border:1px solid rgba(215,25,32,.5);padding:10px 14px;border-radius:999px;font-weight:900}
+    .deal-card{padding:30px;background:linear-gradient(145deg,#c9151d,#650b10);position:relative;overflow:hidden}
+    .deal-card h3{font-size:clamp(1.8rem,4vw,3rem);line-height:1.05;margin:12px 0}
+    .deal-card .save{font-size:1.2rem;color:#ffe4a1;font-weight:900}
+    .schedule{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .schedule .item{padding:22px;text-align:center}
+    .schedule strong{display:block;font-size:1.2rem;margin-top:8px}
+    .schedule .time{background:linear-gradient(145deg,#1a1a20,#0f0f12);border-color:rgba(242,183,51,.35)}
+    .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .benefit{padding:24px}
+    .benefit .icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(215,25,32,.15);font-size:1.7rem}
+    .benefit h3{margin:16px 0 8px}
+    .benefit p{margin:0;color:var(--muted)}
+    .transport{display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+    .transport .img-wrap{min-height:340px}
+    .transport-copy{padding:44px}
+    .transport-copy h2{font-size:clamp(1.8rem,4vw,3rem);margin:10px 0}
+    .check{display:flex;gap:10px;align-items:flex-start;margin:13px 0;color:#e4e4e6}
+    .dot{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#111;display:grid;place-items:center;font-weight:900;flex:0 0 22px}
+    .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    .gallery .img-wrap{border-radius:18px;min-height:220px}
+    .g1{grid-column:span 7}.g2{grid-column:span 5}.g3,.g4,.g5{grid-column:span 4}.g6{grid-column:span 7}.g7{grid-column:span 5}
+    .upgrade-strip{margin-top:18px;display:inline-flex;align-items:center;gap:10px;background:rgba(242,183,51,.1);border:1px solid rgba(242,183,51,.38);border-radius:14px;padding:11px 14px;color:#fff;font-weight:800}
+    .upgrade-strip b{color:var(--gold)}
+    .register-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px;align-items:stretch}
+    .register-copy{padding:36px;position:relative;overflow:hidden}
+    .register-copy h2{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1;margin:10px 0 18px}
+    .register-copy p{color:var(--muted);max-width:580px}
+    .reg-points{display:grid;gap:10px;margin-top:22px}
+    .reg-point{display:flex;align-items:center;gap:10px;font-weight:800}
+    .reg-form{padding:30px;display:grid;gap:15px}
+    .field{display:grid;gap:7px}
+    .field label{font-weight:800;font-size:.92rem}
+    .field input,.field select{width:100%;padding:14px 15px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:#0c0c10;color:white;outline:none;font-size:1rem}
+    .field input:focus,.field select:focus{border-color:rgba(242,183,51,.7);box-shadow:0 0 0 3px rgba(242,183,51,.08)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .submit{border:0;cursor:pointer;justify-content:center;font-size:1rem;margin-top:4px;width:100%}
+    .tiny{font-size:.82rem;color:#8f9199}
+
+    /* ===== Simple program page (swimming/gymnastics/camp) ===== */
+    .info-strip{padding:28px;margin-top:18px}
+    .info-strip p{color:var(--muted);margin:0}
+    .placeholder-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+    .placeholder-gallery .img-wrap{border-radius:18px;min-height:200px}
+
+    /* ===== Location (home) ===== */
+    .location-grid{display:grid;grid-template-columns:1fr .8fr;gap:18px}
+    .location-card{padding:34px}
+    .location-card h2{margin:8px 0 12px;font-size:clamp(1.8rem,4vw,3rem)}
+    .location-card p{color:var(--muted)}
+    .location-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+    .mini-info{padding:26px;display:grid;gap:18px}
+    .mini-row{display:flex;gap:15px;align-items:flex-start}
+    .mini-row b{display:block}
+    .mini-row span{color:var(--muted)}
+
+    /* ===== Footer / whatsapp float ===== */
+    footer{border-top:1px solid rgba(255,255,255,.08);padding:40px 0 90px;background:#070709}
+    .footer-grid{display:flex;justify-content:space-between;gap:24px;align-items:center}
+    .footer-grid img{height:72px;width:auto}
+    .footer-meta{text-align:right;color:#b9bbc2;font-size:.92rem}
+    body.rtl .footer-meta{text-align:left}
+    .social-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .social-link{border:1px solid rgba(255,255,255,.12);padding:9px 12px;border-radius:999px;color:#e6e6e8;font-size:.9rem}
+    .social-link:hover{border-color:var(--gold);color:var(--gold)}
+    .offer-note{margin-top:14px;color:#ffd985;font-size:.86rem}
+    .wa-float{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--green);color:white;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;box-shadow:0 15px 35px rgba(0,0,0,.4)}
+    body.rtl .wa-float{right:auto;left:18px}
+
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .brand-title{display:none}
+      .nav-toggle{display:inline-block}
+      .offer-grid,.transport,.location-grid,.register-wrap{grid-template-columns:1fr}
+      .benefits,.schedule,.programs-grid,.placeholder-gallery{grid-template-columns:repeat(2,1fr)}
+      .hero::before{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.88)),url('assets/hero-team.webp') center/cover no-repeat}
+      .hero-content{max-width:100%}
+      .gallery{grid-template-columns:1fr 1fr}
+      .gallery figure,.gallery .g1,.gallery .g2,.gallery .g3,.gallery .g4,.gallery .g5,.gallery .g6,.gallery .g7{grid-column:span 1!important}
+      .footer-grid{align-items:flex-start;flex-direction:column}
+      .footer-meta{text-align:left}
+      body.rtl .footer-meta{text-align:right}
+      .form-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .nav-inner{height:68px}
+      .brand img{height:46px}
+      .hero{padding-top:96px}
+      h1{font-size:3rem}
+      .hero-stats{grid-template-columns:1fr}
+      .benefits,.schedule,.gallery,.programs-grid,.placeholder-gallery{grid-template-columns:1fr}
+      .price-card,.deal-card,.transport-copy,.location-card,.register-copy,.reg-form{padding:24px}
+      .section-head{display:block}
+      section{padding:60px 0}
+      .cta{padding:10px 14px}
+      .page-hero{padding-top:110px}
+    }
+
+
+    /* ===== Mobile optimization v2.1 ===== */
+    body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    button,a,input,select{-webkit-tap-highlight-color:transparent}
+    .page{overflow-x:hidden}
+    .img-wrap img{transform:translateZ(0)}
+    .mobile-cta-bar{display:none}
+
+    @media(max-width:900px){
+      body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+      .nav{padding-top:env(safe-area-inset-top)}
+      .nav-inner{height:68px;gap:8px}
+      .nav-actions{gap:7px}
+      .nav-actions>.cta{display:none}
+      .lang{min-height:44px;padding:8px 12px}
+      .nav-toggle{min-width:44px;min-height:44px;padding:7px 10px}
+      .mobile-panel{top:calc(68px + env(safe-area-inset-top));max-height:calc(100dvh - 68px - env(safe-area-inset-top));overflow:auto;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+      .mobile-panel a{min-height:48px;display:flex;align-items:center;font-size:1rem}
+
+      .hero{min-height:auto;padding:calc(92px + env(safe-area-inset-top)) 0 48px}
+      .hero::before{background:linear-gradient(180deg,rgba(0,0,0,.54) 0%,rgba(0,0,0,.72) 42%,rgba(0,0,0,.94) 100%),url('assets/hero-team.webp') center 25%/cover no-repeat}
+      .hero::after{height:100px}
+      .hero-content{max-width:100%}
+      .hero .eyebrow{font-size:.8rem}
+      h1{font-size:clamp(2.7rem,12vw,4.3rem);line-height:.9;margin:10px 0 15px}
+      .lead{font-size:1rem;line-height:1.6}
+      .hero-btns{gap:9px;margin-top:22px}
+      .hero-btns .cta,.hero-btns .btn-outline{min-height:48px;justify-content:center}
+      .hero-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:24px}
+      .hero-stat{padding:12px 8px;border-radius:14px;text-align:center}
+      .hero-stat b{font-size:1.2rem;line-height:1.15}
+      .hero-stat span{font-size:.69rem;line-height:1.25;display:block;margin-top:4px}
+
+      section{padding:58px 0}
+      .section-head{margin-bottom:24px;align-items:flex-start}
+      .section-head h2{font-size:clamp(2rem,9vw,3rem);line-height:1.05}
+      .programs-grid{grid-template-columns:1fr 1fr;gap:12px}
+      .prog-card{padding:20px;min-height:190px}
+      .prog-card.more{min-height:190px}
+
+      .page-hero{padding:calc(108px + env(safe-area-inset-top)) 0 44px}
+      .page-hero h1{font-size:clamp(2.4rem,11vw,3.6rem)}
+      .upgrade-strip{width:100%;justify-content:center;text-align:center}
+      .offer-grid,.transport,.location-grid,.register-wrap{grid-template-columns:1fr}
+      .price-card,.deal-card,.transport-copy,.location-card,.register-copy,.reg-form{padding:25px}
+      .price-now{font-size:clamp(4rem,19vw,5.6rem)}
+      .session-pill{width:100%;justify-content:center;border-radius:16px}
+      .deal-card h3{font-size:2.15rem}
+      .schedule{grid-template-columns:1fr 1fr;gap:10px}
+      .schedule .item{padding:17px 10px;min-height:104px;display:flex;flex-direction:column;justify-content:center}
+      .benefits{grid-template-columns:1fr 1fr;gap:10px}
+      .benefit{padding:18px}
+      .benefit .icon{width:46px;height:46px;font-size:1.4rem}
+      .benefit h3{font-size:1rem;margin:12px 0 6px}
+      .benefit p{font-size:.86rem}
+      .transport .img-wrap{min-height:0;aspect-ratio:4/3}
+      .transport-copy h2{font-size:2rem}
+      .gallery{grid-template-columns:1fr 1fr;gap:8px}
+      .gallery figure,.gallery .g1,.gallery .g2,.gallery .g3,.gallery .g4,.gallery .g5,.gallery .g6,.gallery .g7{grid-column:span 1!important;margin:0;min-height:0;aspect-ratio:1/1.08}
+      .gallery .g1{grid-column:1/-1!important;aspect-ratio:16/10}
+      .register-copy h2{font-size:2.35rem}
+      .field input,.field select{font-size:16px;min-height:50px}
+      .submit{min-height:52px}
+      .footer-grid{padding-bottom:10px}
+      .wa-float{display:none}
+      .mobile-cta-bar{display:grid;grid-template-columns:1.25fr .75fr;position:fixed;z-index:70;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));gap:8px;background:rgba(8,8,10,.94);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:7px;box-shadow:0 16px 45px rgba(0,0,0,.5);backdrop-filter:blur(15px)}
+      .mobile-cta-bar a{height:52px;border-radius:13px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:900}
+      .mobile-register{background:var(--green);color:white}
+      .mobile-map{background:#fff;color:#121216}
+    }
+
+    @media(max-width:560px){
+      .container{width:min(94%,1180px)}
+      .brand img{height:43px}
+      .programs-grid{grid-template-columns:1fr}
+      .prog-card{min-height:auto}
+      .hero-btns{display:grid;grid-template-columns:1fr}
+      .hero-stats{gap:6px}
+      .hero-stat{padding:10px 5px}
+      .hero-stat b{font-size:1.05rem}
+      .hero-stat span{font-size:.62rem}
+      .benefits{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:1fr 1fr}
+      .placeholder-gallery{grid-template-columns:1fr}
+      .placeholder-gallery .img-wrap{aspect-ratio:16/10;min-height:0}
+      .footer-grid img{height:62px}
+      .social-row{gap:7px}
+      .social-link{padding:8px 10px;font-size:.82rem}
+    }
+
+    @media(max-width:360px){
+      .hero-stats{grid-template-columns:1fr}
+      .hero-stat{text-align:left}
+      body.rtl .hero-stat{text-align:right}
+      .benefits{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .gallery .g1{grid-column:auto!important;aspect-ratio:4/3}
+      .mobile-cta-bar{grid-template-columns:1fr 1fr}
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV (shared) ===================== -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" data-route="home">
+        <img src="assets/logo.png" alt="Captain Sports Academy logo" onerror="this.style.display='none'">
+        <span class="brand-title">CAPTAIN SPORTS ACADEMY<small data-en="MORE THAN FOOTBALL" data-ar="أكثر من كرة القدم">MORE THAN FOOTBALL</small></span>
+      </a>
+      <div class="nav-links">
+        <a data-route="home" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a data-route="football" data-en="Football" data-ar="كرة القدم">Football</a>
+        <a data-route="swimming" data-en="Swimming" data-ar="السباحة">Swimming</a>
+        <a data-route="gymnastics" data-en="Gymnastics" data-ar="الجمباز">Gymnastics</a>
+        <a data-route="camp" data-en="Summer Camp" data-ar="المعسكر الصيفي">Summer Camp</a>
+      </div>
+      <div class="nav-actions">
+        <a class="lang" id="langBtn" href="ar.html" aria-label="العربية">العربية</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
+        <a class="cta" href="https://wa.me/971525066666" target="_blank" data-en="Register Now" data-ar="سجل الآن">Register Now</a>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-panel" id="mobilePanel">
+    <a data-route="home" data-en="Home" data-ar="الرئيسية">Home</a>
+    <a data-route="football" data-en="Football" data-ar="كرة القدم">Football</a>
+    <a data-route="swimming" data-en="Swimming" data-ar="السباحة">Swimming</a>
+    <a data-route="gymnastics" data-en="Gymnastics" data-ar="الجمباز">Gymnastics</a>
+    <a data-route="camp" data-en="Summer Camp" data-ar="المعسكر الصيفي">Summer Camp</a>
+  </div>
+
+  <!-- ===================== HOME PAGE ===================== -->
+  <main class="page active" id="page-home">
+    <header class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow" data-en="Sharjah • United Arab Emirates" data-ar="الشارقة • الإمارات العربية المتحدة">Sharjah • United Arab Emirates</div>
+          <h1><span data-en="More" data-ar="أكثر">More</span> <span style="color:white" data-en="Than Football" data-ar="من كرة القدم">Than Football</span></h1>
+          <p class="lead" data-en="Captain Sports Academy trains young athletes in football, swimming, gymnastics and seasonal summer camps — in a positive, disciplined environment."
+             data-ar="أكاديمية Captain Sports Academy تدرّب الناشئين في كرة القدم والسباحة والجمباز والمعسكرات الصيفية الموسمية — في بيئة إيجابية ومنضبطة.">
+            Captain Sports Academy trains young athletes in football, swimming, gymnastics and seasonal summer camps — in a positive, disciplined environment.
+          </p>
+          <div class="hero-btns">
+            <a class="cta" data-route="football" data-en="Explore Football Program" data-ar="برنامج كرة القدم">Explore Football Program</a>
+            <a class="btn-outline" href="#programs-section" data-en="See All Programs" data-ar="جميع البرامج">See All Programs</a>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><b>12</b><span data-en="Football Sessions / Month" data-ar="حصة كرة قدم / الشهر">Football Sessions / Month</span></div>
+            <div class="hero-stat"><b data-en="4+" data-ar="+4">4+</b><span data-en="Academy Programs" data-ar="برامج الأكاديمية">Academy Programs</span></div>
+            <div class="hero-stat"><b data-en="Sharjah" data-ar="الشارقة">Sharjah</b><span data-en="Al Khan Beach Location" data-ar="موقع شاطئ الخان">Al Khan Beach Location</span></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-light" id="programs-section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="Our Programs" data-ar="برامجنا">Our Programs</div>
+            <h2 data-en="One academy. Growing programs." data-ar="أكاديمية واحدة. برامج تتوسع.">One academy. Growing programs.</h2>
+          </div>
+          <p data-en="Football is our current flagship program in Sharjah — more sports are on the way."
+             data-ar="كرة القدم هي برنامجنا الرئيسي الحالي في الشارقة — وبرامج رياضية أخرى قادمة قريبًا.">
+            Football is our current flagship program in Sharjah — more sports are on the way.
+          </p>
+        </div>
+        <div class="programs-grid">
+          <div class="card prog-card">
+            <span class="prog-badge active" data-en="Active — 2026/27 Season" data-ar="نشط — موسم 27/2026">Active — 2026/27 Season</span>
+            <h3 data-en="Football" data-ar="كرة القدم">Football</h3>
+            <p data-en="12 sessions/month • Al Khan Beach Stadium, Sharjah • Ages 4–16" data-ar="12 حصة/الشهر • ملعب شاطئ الخان، الشارقة • من 4 إلى 16 سنة">12 sessions/month • Al Khan Beach Stadium, Sharjah • Ages 4–16</p>
+            <a class="go" data-route="football" data-en="View Program →" data-ar="عرض البرنامج ←">View Program →</a>
+          </div>
+          <div class="card prog-card">
+            <span class="prog-badge soon" data-en="Coming Soon" data-ar="قريبًا">Coming Soon</span>
+            <h3 data-en="Swimming" data-ar="السباحة">Swimming</h3>
+            <p data-en="Program details will be announced soon." data-ar="سيتم الإعلان عن تفاصيل البرنامج قريبًا.">Program details will be announced soon.</p>
+            <a class="go" data-route="swimming" data-en="Learn More →" data-ar="اعرف أكثر ←">Learn More →</a>
+          </div>
+          <div class="card prog-card">
+            <span class="prog-badge soon" data-en="Coming Soon" data-ar="قريبًا">Coming Soon</span>
+            <h3 data-en="Gymnastics" data-ar="الجمباز">Gymnastics</h3>
+            <p data-en="Program details will be announced soon." data-ar="سيتم الإعلان عن تفاصيل البرنامج قريبًا.">Program details will be announced soon.</p>
+            <a class="go" data-route="gymnastics" data-en="Learn More →" data-ar="اعرف أكثر ←">Learn More →</a>
+          </div>
+          <div class="card prog-card">
+            <span class="prog-badge soon" data-en="Seasonal" data-ar="موسمي">Seasonal</span>
+            <h3 data-en="Summer Camps" data-ar="المعسكرات الصيفية">Summer Camps</h3>
+            <p data-en="Multi-activity camps run seasonally — contact us for upcoming dates." data-ar="معسكرات متعددة الأنشطة تُقام موسميًا — تواصل معنا لمعرفة المواعيد القادمة.">Multi-activity camps run seasonally — contact us for upcoming dates.</p>
+            <a class="go" data-route="camp" data-en="Learn More →" data-ar="اعرف أكثر ←">Learn More →</a>
+          </div>
+          <div class="card prog-card more">
+            <h3 data-en="More Activities" data-ar="أنشطة أخرى">More Activities</h3>
+            <p data-en="Karate, badminton, volleyball and more are being planned as the academy grows." data-ar="الكاراتيه والريشة الطائرة والكرة الطائرة وأنشطة أخرى قيد التخطيط مع توسّع الأكاديمية.">Karate, badminton, volleyball and more are being planned as the academy grows.</p>
+            <a class="go" href="https://wa.me/971525066666" target="_blank" data-en="Suggest a Program →" data-ar="اقترح برنامجًا ←">Suggest a Program →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="location">
+      <div class="container">
+        <div class="location-grid">
+          <div class="card location-card">
+            <div class="eyebrow" data-en="Current Location" data-ar="الموقع الحالي">Current Location</div>
+            <h2 data-en="Al Khan Beach Stadium – Sharjah" data-ar="ملعب شاطئ الخان – الشارقة">Al Khan Beach Stadium – Sharjah</h2>
+            <p data-en="Our football program currently trains at Al Khan Beach Stadium in Sharjah. Additional locations and programs will be announced as they launch."
+               data-ar="يتدرب برنامج كرة القدم حاليًا في ملعب شاطئ الخان بالشارقة. سيتم الإعلان عن مواقع وبرامج إضافية عند انطلاقها.">
+              Our football program currently trains at Al Khan Beach Stadium in Sharjah. Additional locations and programs will be announced as they launch.
+            </p>
+            <div class="location-actions">
+              <a class="cta" href="https://maps.app.goo.gl/LR3WN94JyCy6TYmU8?g_st=ic" target="_blank" data-en="Open Google Maps" data-ar="افتح Google Maps">Open Google Maps</a>
+              <a class="btn-outline" href="https://wa.me/971525066666" target="_blank" data-en="Contact Us" data-ar="تواصل معنا">Contact Us</a>
+            </div>
+          </div>
+          <div class="card mini-info">
+            <div class="mini-row"><div>📍</div><div><b data-en="Sharjah Only" data-ar="الشارقة فقط">Sharjah Only</b><span data-en="Al Khan Beach Stadium" data-ar="ملعب شاطئ الخان">Al Khan Beach Stadium</span></div></div>
+            <div class="mini-row"><div>🗓️</div><div><b data-en="Football: 3 Days / Week" data-ar="كرة القدم: 3 أيام / الأسبوع">Football: 3 Days / Week</b><span data-en="Saturday • Monday • Wednesday" data-ar="السبت • الاثنين • الأربعاء">Saturday • Monday • Wednesday</span></div></div>
+            <div class="mini-row"><div>⏰</div><div><b>7:00 PM</b><span data-en="Football training time" data-ar="موعد تدريب كرة القدم">Football training time</span></div></div>
+            <div class="mini-row"><div>📞</div><div><b>052 50 6666 6</b><span data-en="WhatsApp & inquiries" data-ar="واتساب والاستفسارات">WhatsApp & inquiries</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTBALL PAGE ===================== -->
+  <main class="page" id="page-football">
+    <header class="page-hero">
+      <div class="container">
+        <span class="back-link" data-route="home">← <span data-en="Back to Home" data-ar="الرجوع للرئيسية">Back to Home</span></span>
+        <div class="eyebrow" data-en="Sharjah • Al Khan Beach Stadium" data-ar="الشارقة • ملعب شاطئ الخان">Sharjah • Al Khan Beach Stadium</div>
+        <h1 style="text-transform:uppercase;font-style:italic" data-en="Football Program" data-ar="برنامج كرة القدم">Football Program</h1>
+        <p class="lead" data-en="Professional football development in a positive, disciplined environment — now upgraded from 8 to 12 training sessions every month."
+           data-ar="تطوير كروي احترافي في بيئة إيجابية ومنضبطة — والآن طورنا البرنامج من 8 إلى 12 حصة تدريبية كل شهر.">
+           Professional football development in a positive, disciplined environment — now upgraded from 8 to 12 training sessions every month.
+        </p>
+        <span class="status-pill active" data-en="Active — 2026/27 Season" data-ar="نشط — موسم 27/2026">Active — 2026/27 Season</span>
+        <div class="upgrade-strip"><span>🔥</span><span data-en="Upgraded: 12 sessions instead of 8" data-ar="تطوير البرنامج: 12 حصة بدل 8">Upgraded: 12 sessions instead of 8</span></div>
+        <div class="hero-btns">
+          <a class="cta" href="https://wa.me/971525066666?text=Hello%20Captain%20Sports%20Academy%2C%20I%20want%20to%20register." target="_blank" data-en="WhatsApp Registration" data-ar="التسجيل عبر واتساب">WhatsApp Registration</a>
+          <a class="btn-outline" href="https://maps.app.goo.gl/LR3WN94JyCy6TYmU8?g_st=ic" target="_blank" data-en="Open Location" data-ar="فتح الموقع">Open Location</a>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="Welcome Back Offer" data-ar="عرض العودة">Welcome Back Offer</div>
+            <h2 data-en="More training. More value." data-ar="تدريب أكثر. قيمة أكبر.">More training. More value.</h2>
+          </div>
+          <p data-en="We increased the monthly program from 8 sessions to 12 sessions at Al Khan Beach Stadium in Sharjah."
+             data-ar="طورنا البرنامج الشهري من 8 حصص إلى 12 حصة في ملعب شاطئ الخان بالشارقة.">
+            We increased the monthly program from 8 sessions to 12 sessions at Al Khan Beach Stadium in Sharjah.
+          </p>
+        </div>
+        <div class="offer-grid">
+          <div class="card price-card">
+            <div class="eyebrow" data-en="Monthly Plan" data-ar="الاشتراك الشهري">Monthly Plan</div>
+            <div class="price-old">AED 350</div>
+            <div class="price-now">300 <small>AED</small></div>
+            <div class="session-pill"><strong>12</strong> <span data-en="training sessions every month" data-ar="حصة تدريبية كل شهر">training sessions every month</span></div>
+            <p style="color:var(--muted);margin-top:18px" data-en="Saturday • Monday • Wednesday" data-ar="السبت • الاثنين • الأربعاء">Saturday • Monday • Wednesday</p>
+          </div>
+          <div class="card deal-card">
+            <div class="eyebrow" style="color:white" data-en="3-Month Special" data-ar="عرض 3 شهور">3-Month Special</div>
+            <h3 data-en="Pay 2 Months. Get 1 Month FREE." data-ar="ادفع شهرين واحصل على الشهر الثالث مجانًا.">Pay 2 Months. Get 1 Month FREE.</h3>
+            <div class="save" data-en="AED 700 instead of AED 1,050" data-ar="700 درهم بدلًا من 1,050 درهم">AED 700 instead of AED 1,050</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="Training Schedule" data-ar="مواعيد التدريب">Training Schedule</div>
+            <h2 data-en="Three days every week." data-ar="ثلاثة أيام كل أسبوع.">Three days every week.</h2>
+          </div>
+        </div>
+        <div class="schedule">
+          <div class="card item"><span>📅</span><strong data-en="Saturday" data-ar="السبت">Saturday</strong></div>
+          <div class="card item"><span>📅</span><strong data-en="Monday" data-ar="الاثنين">Monday</strong></div>
+          <div class="card item"><span>📅</span><strong data-en="Wednesday" data-ar="الأربعاء">Wednesday</strong></div>
+          <div class="card item time"><span>⏰</span><strong>7:00 PM</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="Player Development" data-ar="تطوير اللاعبين">Player Development</div>
+            <h2 data-en="Better players. Brighter futures." data-ar="لاعبون أفضل. مستقبل أقوى.">Better players. Brighter futures.</h2>
+          </div>
+        </div>
+        <div class="benefits">
+          <div class="card benefit"><div class="icon">⚽</div><h3 data-en="Skill Development" data-ar="تطوير المهارات">Skill Development</h3><p data-en="Structured football training designed to improve technique and confidence." data-ar="تدريب منظم لتطوير المهارات والثقة داخل الملعب.">Structured football training designed to improve technique and confidence.</p></div>
+          <div class="card benefit"><div class="icon">🤝</div><h3 data-en="Team Spirit" data-ar="روح الفريق">Team Spirit</h3><p data-en="Players learn communication, teamwork and positive competition." data-ar="تعلم التواصل والعمل الجماعي والمنافسة الإيجابية.">Players learn communication, teamwork and positive competition.</p></div>
+          <div class="card benefit"><div class="icon">🏆</div><h3 data-en="Discipline" data-ar="الانضباط">Discipline</h3><p data-en="Training habits that support consistency, focus and responsibility." data-ar="عادات تدريب تعزز الالتزام والتركيز والمسؤولية.">Training habits that support consistency, focus and responsibility.</p></div>
+          <div class="card benefit"><div class="icon">📈</div><h3 data-en="Progress" data-ar="التطور">Progress</h3><p data-en="More sessions each month means more opportunities to develop." data-ar="عدد حصص أكبر كل شهر يعني فرصًا أكثر للتطور.">More sessions each month means more opportunities to develop.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container card transport">
+        <div class="img-wrap"><span class="ph" data-en="Player Training Photo" data-ar="صورة تدريب لاعب">Player Training Photo</span><img src="assets/player-action.webp" alt="Captain Sports Academy player training" onerror="this.style.display='none'" loading="lazy" decoding="async"></div>
+        <div class="transport-copy">
+          <div class="eyebrow" data-en="Transportation Available" data-ar="تتوفر خدمة الباص">Transportation Available</div>
+          <h2 data-en="Training made easier for families." data-ar="نوفر على الأسرة مشوار التدريب.">Training made easier for families.</h2>
+          <p style="color:var(--muted)" data-en="Bus transportation is available for academy players. Contact us on WhatsApp for route and availability."
+             data-ar="تتوفر خدمة الباص للاعبي الأكاديمية. تواصل معنا عبر واتساب لمعرفة خط السير والتوفر.">
+            Bus transportation is available for academy players. Contact us on WhatsApp for route and availability.
+          </p>
+          <div class="check"><span class="dot">✓</span><span data-en="Convenient transportation option" data-ar="خيار نقل مريح">Convenient transportation option</span></div>
+          <div class="check"><span class="dot">✓</span><span data-en="Training three days per week" data-ar="تدريب 3 أيام في الأسبوع">Training three days per week</span></div>
+          <div class="check"><span class="dot">✓</span><span data-en="Direct WhatsApp registration and support" data-ar="تسجيل ودعم مباشر عبر واتساب">Direct WhatsApp registration and support</span></div>
+          <a class="cta" style="margin-top:18px" href="https://wa.me/971525066666" target="_blank" data-en="Ask About Bus Service" data-ar="اسأل عن خدمة الباص">Ask About Bus Service</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow" data-en="Our Academy" data-ar="أكاديميتنا">Our Academy</div>
+            <h2 data-en="Real players. Real moments." data-ar="لاعبونا. لحظات حقيقية.">Real players. Real moments.</h2>
+          </div>
+          <p data-en="A selection of real Captain Sports Academy training, team and achievement photos."
+             data-ar="مجموعة من صور التدريبات والفرق والإنجازات الحقيقية في Captain Sports Academy.">
+            A selection of real Captain Sports Academy training, team and achievement photos.
+          </p>
+        </div>
+        <div class="gallery">
+          <figure class="g1 img-wrap"><span class="ph">Team</span><img src="assets/team-night.webp" alt="Captain Sports Academy team" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g2 img-wrap"><span class="ph">Player</span><img src="assets/player-ball.webp" alt="Academy player with football" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g3 img-wrap"><span class="ph">Player</span><img src="assets/player-pose.webp" alt="Academy player" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g4 img-wrap"><span class="ph">Players</span><img src="assets/two-players.webp" alt="Academy players" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g5 img-wrap"><span class="ph">MVP</span><img src="assets/mvp-duo.webp" alt="Academy MVP players" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g6 img-wrap"><span class="ph">Team</span><img src="assets/team-day.webp" alt="Captain Sports Academy daytime team" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+          <figure class="g7 img-wrap"><span class="ph">Award</span><img src="assets/mvp-player.webp" alt="Academy player award" onerror="this.style.display='none'" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="register">
+      <div class="container register-wrap">
+        <div class="card register-copy">
+          <div class="eyebrow" data-en="Join Captain Sports Academy" data-ar="انضم إلى Captain Sports Academy">Join Captain Sports Academy</div>
+          <h2 data-en="Ready to get on the field?" data-ar="جاهزين ننزل الملعب؟">Ready to get on the field?</h2>
+          <p data-en="Send your registration details directly to our WhatsApp. No account or online payment is required."
+             data-ar="أرسل بيانات التسجيل مباشرة إلى واتساب الأكاديمية. لا تحتاج إلى إنشاء حساب أو دفع إلكتروني.">
+            Send your registration details directly to our WhatsApp. No account or online payment is required.
+          </p>
+          <div class="reg-points">
+            <div class="reg-point">✓ <span data-en="12 sessions every month" data-ar="12 حصة تدريبية كل شهر">12 sessions every month</span></div>
+            <div class="reg-point">✓ <span data-en="AED 300 monthly welcome-back rate" data-ar="عرض العودة الشهري 300 درهم">AED 300 monthly welcome-back rate</span></div>
+            <div class="reg-point">✓ <span data-en="3-month offer: AED 700 instead of AED 1,050" data-ar="عرض 3 شهور: 700 درهم بدل 1,050">3-month offer: AED 700 instead of AED 1,050</span></div>
+            <div class="reg-point">✓ <span data-en="Transportation available" data-ar="تتوفر خدمة الباص">Transportation available</span></div>
+          </div>
+        </div>
+
+        <form class="card reg-form" id="regForm">
+          <div class="form-grid">
+            <div class="field">
+              <label data-en="Parent name" data-ar="اسم ولي الأمر">Parent name</label>
+              <input id="parentName" required data-ph-en="Your name" data-ph-ar="الاسم" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label data-en="Player name" data-ar="اسم اللاعب">Player name</label>
+              <input id="playerName" required data-ph-en="Player name" data-ph-ar="اسم اللاعب" placeholder="Player name">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label data-en="Player age" data-ar="عمر اللاعب">Player age</label>
+              <input id="playerAge" inputmode="numeric" data-ph-en="Age" data-ph-ar="العمر" placeholder="Age">
+            </div>
+            <div class="field">
+              <label data-en="Transportation" data-ar="خدمة الباص">Transportation</label>
+              <select id="transport">
+                <option value="Yes" data-en="Yes, I need transportation" data-ar="نعم، أحتاج الباص">Yes, I need transportation</option>
+                <option value="No" data-en="No transportation needed" data-ar="لا أحتاج الباص">No transportation needed</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label data-en="Preferred plan" data-ar="الاشتراك المطلوب">Preferred plan</label>
+            <select id="plan">
+              <option value="Monthly - AED 300" data-en="Monthly — AED 300 / 12 sessions" data-ar="شهري — 300 درهم / 12 حصة">Monthly — AED 300 / 12 sessions</option>
+              <option value="3 months - AED 700" data-en="3 months — AED 700 instead of AED 1,050" data-ar="3 شهور — 700 درهم بدل 1,050">3 months — AED 700 instead of AED 1,050</option>
+            </select>
+          </div>
+          <button class="cta submit" type="submit" data-en="Send Registration on WhatsApp" data-ar="أرسل التسجيل عبر واتساب">Send Registration on WhatsApp</button>
+          <div class="tiny" data-en="Your details are sent only when you tap the WhatsApp button."
+               data-ar="لن يتم إرسال بياناتك إلا بعد الضغط على زر واتساب.">
+            Your details are sent only when you tap the WhatsApp button.
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== SWIMMING PAGE ===================== -->
+  <main class="page" id="page-swimming">
+    <header class="page-hero">
+      <div class="container">
+        <span class="back-link" data-route="home">← <span data-en="Back to Home" data-ar="الرجوع للرئيسية">Back to Home</span></span>
+        <div class="eyebrow" data-en="Captain Sports Academy" data-ar="Captain Sports Academy">Captain Sports Academy</div>
+        <h1 style="text-transform:uppercase;font-style:italic" data-en="Swimming" data-ar="السباحة">Swimming</h1>
+        <p class="lead" data-en="Our swimming program is being prepared. Contact us on WhatsApp to register your interest and be the first to know when it launches."
+           data-ar="برنامج السباحة قيد التحضير. تواصل معنا عبر واتساب لتسجيل اهتمامك وتكون أول من يعلم عند انطلاق البرنامج.">
+          Our swimming program is being prepared. Contact us on WhatsApp to register your interest and be the first to know when it launches.
+        </p>
+        <span class="status-pill soon" data-en="Coming Soon" data-ar="قريبًا">Coming Soon</span>
+        <div class="hero-btns">
+          <a class="cta" href="https://wa.me/971525066666?text=Hello%20Captain%20Sports%20Academy%2C%20I%27m%20interested%20in%20the%20Swimming%20program." target="_blank" data-en="Ask on WhatsApp" data-ar="اسأل عبر واتساب">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <div class="card info-strip">
+          <p data-en="Schedule, pricing and location for the Swimming program will be published here once confirmed." data-ar="سيتم نشر مواعيد وأسعار وموقع برنامج السباحة هنا بعد تأكيدها.">Schedule, pricing and location for the Swimming program will be published here once confirmed.</p>
+        </div>
+        <div class="placeholder-gallery">
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== GYMNASTICS PAGE ===================== -->
+  <main class="page" id="page-gymnastics">
+    <header class="page-hero">
+      <div class="container">
+        <span class="back-link" data-route="home">← <span data-en="Back to Home" data-ar="الرجوع للرئيسية">Back to Home</span></span>
+        <div class="eyebrow" data-en="Captain Sports Academy" data-ar="Captain Sports Academy">Captain Sports Academy</div>
+        <h1 style="text-transform:uppercase;font-style:italic" data-en="Gymnastics" data-ar="الجمباز">Gymnastics</h1>
+        <p class="lead" data-en="Our gymnastics program is being prepared. Contact us on WhatsApp to register your interest and be the first to know when it launches."
+           data-ar="برنامج الجمباز قيد التحضير. تواصل معنا عبر واتساب لتسجيل اهتمامك وتكون أول من يعلم عند انطلاق البرنامج.">
+          Our gymnastics program is being prepared. Contact us on WhatsApp to register your interest and be the first to know when it launches.
+        </p>
+        <span class="status-pill soon" data-en="Coming Soon" data-ar="قريبًا">Coming Soon</span>
+        <div class="hero-btns">
+          <a class="cta" href="https://wa.me/971525066666?text=Hello%20Captain%20Sports%20Academy%2C%20I%27m%20interested%20in%20the%20Gymnastics%20program." target="_blank" data-en="Ask on WhatsApp" data-ar="اسأل عبر واتساب">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <div class="card info-strip">
+          <p data-en="Schedule, pricing and location for the Gymnastics program will be published here once confirmed." data-ar="سيتم نشر مواعيد وأسعار وموقع برنامج الجمباز هنا بعد تأكيدها.">Schedule, pricing and location for the Gymnastics program will be published here once confirmed.</p>
+        </div>
+        <div class="placeholder-gallery">
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== SUMMER CAMP PAGE ===================== -->
+  <main class="page" id="page-camp">
+    <header class="page-hero">
+      <div class="container">
+        <span class="back-link" data-route="home">← <span data-en="Back to Home" data-ar="الرجوع للرئيسية">Back to Home</span></span>
+        <div class="eyebrow" data-en="Captain Sports Academy" data-ar="Captain Sports Academy">Captain Sports Academy</div>
+        <h1 style="text-transform:uppercase;font-style:italic" data-en="Summer Camp" data-ar="المعسكر الصيفي">Summer Camp</h1>
+        <p class="lead" data-en="Our multi-activity summer camp runs seasonally in Sharjah. Contact us on WhatsApp for upcoming dates and details."
+           data-ar="معسكرنا الصيفي متعدد الأنشطة يُقام موسميًا في الشارقة. تواصل معنا عبر واتساب لمعرفة المواعيد القادمة والتفاصيل.">
+          Our multi-activity summer camp runs seasonally in Sharjah. Contact us on WhatsApp for upcoming dates and details.
+        </p>
+        <span class="status-pill soon" data-en="Seasonal" data-ar="موسمي">Seasonal</span>
+        <div class="hero-btns">
+          <a class="cta" href="https://wa.me/971525066666?text=Hello%20Captain%20Sports%20Academy%2C%20I%27m%20interested%20in%20the%20Summer%20Camp." target="_blank" data-en="Ask on WhatsApp" data-ar="اسأل عبر واتساب">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="container">
+        <div class="card info-strip">
+          <p data-en="Dates, pricing and activities for the next Summer Camp will be published here once confirmed." data-ar="سيتم نشر المواعيد والأسعار والأنشطة للمعسكر الصيفي القادم هنا بعد تأكيدها.">Dates, pricing and activities for the next Summer Camp will be published here once confirmed.</p>
+        </div>
+        <div class="placeholder-gallery">
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+          <div class="img-wrap"><span class="ph" data-en="Photo coming soon" data-ar="الصورة قريبًا">Photo coming soon</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER / WHATSAPP (shared) ===================== -->
+  <footer>
+    <div class="container footer-grid">
+      <img src="assets/logo.png" alt="Captain Sports Academy" onerror="this.style.display='none'">
+      <div class="footer-meta">
+        <strong style="color:white">Captain Sports Academy</strong><br>
+        <span data-en="Sharjah • United Arab Emirates" data-ar="الشارقة • الإمارات العربية المتحدة">Sharjah • United Arab Emirates</span><br>
+        <span data-en="More Than Football" data-ar="أكثر من كرة القدم">More Than Football</span>
+        <div class="social-row">
+          <a class="social-link" target="_blank" href="https://www.instagram.com/captainsportsacademyllc?igsi=NHF6YWVxd2Rwa2Zj&utm_source=qr">Instagram</a>
+          <a class="social-link" target="_blank" href="https://maps.app.goo.gl/LR3WN94JyCy6TYmU8?g_st=ic" data-en="Google Maps" data-ar="Google Maps">Google Maps</a>
+          <a class="social-link" target="_blank" href="https://wa.me/971525066666">WhatsApp</a>
+        </div>
+        <div class="offer-note" data-en="Football currently active: Al Khan Beach Stadium, Sharjah" data-ar="كرة القدم نشطة حاليًا: ملعب شاطئ الخان، الشارقة">Football currently active: Al Khan Beach Stadium, Sharjah</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="mobile-cta-bar" aria-label="Quick actions">
+    <a class="mobile-register" href="https://wa.me/971525066666?text=Hello%20Captain%20Sports%20Academy%2C%20I%20want%20to%20register." target="_blank">
+      <span>💬</span><span data-en="Register" data-ar="سجل الآن">Register</span>
+    </a>
+    <a class="mobile-map" href="https://maps.app.goo.gl/LR3WN94JyCy6TYmU8?g_st=ic" target="_blank">
+      <span>📍</span><span data-en="Location" data-ar="الموقع">Location</span>
+    </a>
+  </div>
+
+  <a class="wa-float" href="https://wa.me/971525066666" target="_blank" aria-label="WhatsApp">✆</a>
+
+  <script>
+    const ar = document.documentElement.lang === 'ar';
+const navToggle = document.getElementById('navToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+navToggle.addEventListener('click', () => { const open = mobilePanel.classList.toggle('open'); navToggle.setAttribute('aria-expanded', open ? 'true' : 'false'); });
+
+    // ---- simple page routing (Home / Football / Swimming / Gymnastics / Camp) ----
+    const pages = ['home','football','swimming','gymnastics','camp'];
+    function showPage(id){
+      if (!pages.includes(id)) id = 'home';
+      pages.forEach(p => document.getElementById('page-' + p).classList.toggle('active', p === id));
+      document.querySelectorAll('.nav-links a, .mobile-panel a').forEach(a => {
+        a.classList.toggle('on', a.dataset.route === id);
+      });
+      window.scrollTo({top:0, behavior:'auto'});
+      mobilePanel.classList.remove('open'); navToggle.setAttribute('aria-expanded','false');
+    }
+    document.querySelectorAll('[data-route]').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showPage(el.dataset.route);
+        history.replaceState(null, '', '#' + el.dataset.route);
+      });
+    });
+    showPage((location.hash || '#home').slice(1));
+
+    document.getElementById('regForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const parent = document.getElementById('parentName').value.trim();
+      const player = document.getElementById('playerName').value.trim();
+      const age = document.getElementById('playerAge').value.trim();
+      const transport = document.getElementById('transport').value;
+      const plan = document.getElementById('plan').value;
+
+      const message = ar
+        ? `مرحبًا Captain Sports Academy، أريد التسجيل في برنامج كرة القدم.%0A%0Aاسم ولي الأمر: ${encodeURIComponent(parent)}%0Aاسم اللاعب: ${encodeURIComponent(player)}%0Aالعمر: ${encodeURIComponent(age || '-') }%0Aالاشتراك: ${encodeURIComponent(plan)}%0Aالباص: ${transport === 'Yes' ? 'نعم' : 'لا'}`
+        : `Hello Captain Sports Academy, I would like to register for the Football program.%0A%0AParent: ${encodeURIComponent(parent)}%0APlayer: ${encodeURIComponent(player)}%0AAge: ${encodeURIComponent(age || '-') }%0APlan: ${encodeURIComponent(plan)}%0ATransportation: ${transport}`;
+      window.open(`https://wa.me/971525066666?text=${message}`, '_blank');
+    });
+  </script>
+</body>
+</html>
